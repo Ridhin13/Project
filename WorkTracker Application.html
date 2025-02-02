@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Data Entry</title>
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('file:///C:/Users/DELL/Desktop/worktracker%20new/Desktop%20-%202.png');
+            background-size: cover;  /* Ensures the image covers the full page */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            margin: 0;
+}
+
+        #projectForm {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 80vh; /* Ensures the form fits within the viewport */
+            overflow: auto; /* Enables scrolling */
+            box-sizing: border-box;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input, select {
+            padding: 12px;
+            margin: 8px 0;
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        button {
+            padding: 12px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .form-section h3 {
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+        .back-btn {
+            position: absolute; /* Positioning the button absolutely */
+            right: 20px; /* 20px from the right edge */
+            bottom: 70px; /* 30px from the bottom edge */
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding around the text */
+            text-align: center; /* Center the text */
+            text-decoration: none; /* Remove underline */
+            font-size: 16px; /* Text size */
+            border-radius: 5px; /* Rounded corners */
+        }
+        .back-btn:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+  </style>
+</head>
+<body>
+  
+  <form id="projectForm" name="projectForm">
+    <label for="sheetName">Select Data Type:</label> <select id="sheetName" name="sheetName">
+      <option value="Planned Work">
+        Planned Work
+      </option>
+      <option value="Actual Work">
+        Actual Work
+      </option>
+      <option value="Planned Workers">
+        Planned Workers
+      </option>
+      <option value="Actual Workers">
+        Actual Workers
+      </option>
+    </select>
+    <div id="plannedWorkFields" style="display: none;">
+      <h3>Planned Work</h3><label>Year:</label><input type="number" id="yearPlannedWork" step="1"> <label>Month:</label><input type="number" id="monthPlannedWork" min="1" max="12" step="1"> <label>Working Piles:</label><input type="number" id="workingPilesPlanned" step="0.01"> <label>Pile Cap:</label><input type="number" id="pileCapPlanned" step="0.01"> <label>Pier:</label><input type="number" id="pierPlanned" step="0.01"> <label>Pier Cap Casting:</label><input type="number" id="pierCapCastingPlanned" step="0.01"> <label>U-Girder Casting:</label><input type="number" id="uGirderCastingPlanned" step="0.01"> <label>Pre-Tension I-Girder Casting:</label><input type="number" id="preTensionIGirderCastingPlanned" step="0.01"> <label>Post-Tension I-Girder Casting:</label><input type="number" id="postTensionIGirderCastingPlanned" step="0.01"> <label>Pier Cap Erection:</label><input type="number" id="pierCapErectionPlanned" step="0.01"> <label>U-Girder Erection:</label><input type="number" id="uGirderErectionPlanned" step="0.01"> <label>Post-Tension I-Girder Erection:</label><input type="number" id="postTensionIGirderErectionPlanned" step="0.01"> <label>Pre-Tension I-Girder Erection:</label><input type="number" id="preTensionIGirderErectionPlanned" step="0.01">
+    </div>
+    <div id="actualWorkFields" style="display: none;">
+      <h3>Actual Work</h3><label>Year:</label><input type="number" id="yearActualWork" step="1"> <label>Month:</label><input type="number" id="monthActualWork" min="1" max="12" step="1"> <label>Date:</label><input type="number" id="dateActualWork" min="1" max="31" step="1"> <label>Working Piles:</label><input type="number" id="workingPilesActual" step="0.01"> <label>Pile Cap:</label><input type="number" id="pileCapActual" step="0.01"> <label>Pier:</label><input type="number" id="pierActual" step="0.01"> <label>Pier Cap Casting:</label><input type="number" id="pierCapCastingActual" step="0.01"> <label>U-Girder Casting:</label><input type="number" id="uGirderCastingActual" step="0.01"> <label>Pre-Tension I-Girder Casting:</label><input type="number" id="preTensionIGirderCastingActual" step="0.01"> <label>Post-Tension I-Girder Casting:</label><input type="number" id="postTensionIGirderCastingActual" step="0.01"> <label>Pier Cap Erection:</label><input type="number" id="pierCapErectionActual" step="0.01"> <label>U-Girder Erection:</label><input type="number" id="uGirderErectionActual" step="0.01"> <label>Post-Tension I-Girder Erection:</label><input type="number" id="postTensionIGirderErectionActual" step="0.01"> <label>Pre-Tension I-Girder Erection:</label><input type="number" id="preTensionIGirderErectionActual" step="0.01">
+    </div>
+    <div id="plannedWorkersFields" style="display: none;">
+      <h3>Planned Workers</h3><label>Year:</label><input type="number" id="yearPlannedWorkers" step="1"> <label>Month:</label><input type="number" id="monthPlannedWorkers" min="1" max="12" step="1"> <label>Skilled Workers:</label><input type="number" id="skilledPlannedWorkers" step="0.01"> <label>Unskilled Workers:</label><input type="number" id="unskilledPlannedWorkers" step="0.01">
+    </div>
+    <div id="actualWorkersFields" style="display: none;">
+      <h3>Actual Workers</h3><label>Year:</label><input type="number" id="yearActualWorkers" step="1"> <label>Month:</label><input type="number" id="monthActualWorkers" min="1" max="12" step="1"> <label>Date:</label><input type="number" id="dateActualWorkers" min="1" max="31" step="1"> <label>Skilled Workers:</label><input type="number" id="skilledActualWorkers" step="0.01"> <label>Unskilled Workers:</label><input type="number" id="unskilledActualWorkers" step="0.01">
+    </div><button type="submit">Submit</button>
+    <a href="centre page.html" class="back-btn">Back</a>
+  </form>
+  <script>
+        // Toggle fields based on selection
+        document.getElementById('sheetName').addEventListener('change', function () {
+            var sheetName = this.value;
+            document.getElementById('plannedWorkFields').style.display = 'none';
+            document.getElementById('actualWorkFields').style.display = 'none';
+            document.getElementById('plannedWorkersFields').style.display = 'none';
+            document.getElementById('actualWorkersFields').style.display = 'none';
+
+            if (sheetName === 'Planned Work') {
+                document.getElementById('plannedWorkFields').style.display = 'block';
+            } else if (sheetName === 'Actual Work') {
+                document.getElementById('actualWorkFields').style.display = 'block';
+            } else if (sheetName === 'Planned Workers') {
+                document.getElementById('plannedWorkersFields').style.display = 'block';
+            } else if (sheetName === 'Actual Workers') {
+                document.getElementById('actualWorkersFields').style.display = 'block';
+            }
+        });
+
+        // Submit form data to Apps Script Web App
+        document.getElementById('projectForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+            var data = {
+                sheetName: formData.get('sheetName'),
+                data: {}
+            };
+
+            // Gather data based on form input fields
+            if (data.sheetName === 'Planned Work') {
+                data.data = {
+                    year: parseInt(document.getElementById('yearPlannedWork').value),
+                    month: parseInt(document.getElementById('monthPlannedWork').value),
+                    workingPiles: parseFloat(document.getElementById('workingPilesPlanned').value),
+                    pileCap: parseFloat(document.getElementById('pileCapPlanned').value),
+                    pier: parseFloat(document.getElementById('pierPlanned').value),
+                    pierCapCasting: parseFloat(document.getElementById('pierCapCastingPlanned').value),
+                    uGirderCasting: parseFloat(document.getElementById('uGirderCastingPlanned').value),
+                    preTensionIGirderCasting: parseFloat(document.getElementById('preTensionIGirderCastingPlanned').value),
+                    postTensionIGirderCasting: parseFloat(document.getElementById('postTensionIGirderCastingPlanned').value),
+                    pierCapErection: parseFloat(document.getElementById('pierCapErectionPlanned').value),
+                    uGirderErection: parseFloat(document.getElementById('uGirderErectionPlanned').value),
+                    postTensionIGirderErection: parseFloat(document.getElementById('postTensionIGirderErectionPlanned').value),
+                    preTensionIGirderErection: parseFloat(document.getElementById('preTensionIGirderErectionPlanned').value)
+                };
+            } else if (data.sheetName === 'Actual Work') {
+                data.data = {
+                    year: parseInt(document.getElementById('yearActualWork').value),
+                    month: parseInt(document.getElementById('monthActualWork').value),
+                    date: parseInt(document.getElementById('dateActualWork').value),
+                    workingPiles: parseFloat(document.getElementById('workingPilesActual').value),
+                    pileCap: parseFloat(document.getElementById('pileCapActual').value),
+                    pier: parseFloat(document.getElementById('pierActual').value),
+                    pierCapCasting: parseFloat(document.getElementById('pierCapCastingActual').value),
+                    uGirderCasting: parseFloat(document.getElementById('uGirderCastingActual').value),
+                    preTensionIGirderCasting: parseFloat(document.getElementById('preTensionIGirderCastingActual').value),
+                    postTensionIGirderCasting: parseFloat(document.getElementById('postTensionIGirderCastingActual').value),
+                    pierCapErection: parseFloat(document.getElementById('pierCapErectionActual').value),
+                    uGirderErection: parseFloat(document.getElementById('uGirderErectionActual').value),
+                    postTensionIGirderErection: parseFloat(document.getElementById('postTensionIGirderErectionActual').value),
+                    preTensionIGirderErection: parseFloat(document.getElementById('preTensionIGirderErectionActual').value)
+                };
+            } else if (data.sheetName === 'Planned Workers') {
+                data.data = {
+                    year: parseInt(document.getElementById('yearPlannedWorkers').value),
+                    month: parseInt(document.getElementById('monthPlannedWorkers').value),
+                    skilled: parseFloat(document.getElementById('skilledPlannedWorkers').value),
+                    unskilled: parseFloat(document.getElementById('unskilledPlannedWorkers').value)
+                };
+            } else if (data.sheetName === 'Actual Workers') {
+                data.data = {
+                    year: parseInt(document.getElementById('yearActualWorkers').value),
+                    month: parseInt(document.getElementById('monthActualWorkers').value),
+                    date: parseInt(document.getElementById('dateActualWorkers').value),
+                    skilled: parseFloat(document.getElementById('skilledActualWorkers').value),
+                    unskilled: parseFloat(document.getElementById('unskilledActualWorkers').value)
+                };
+            }
+
+            // Send data to Google Apps Script Web App
+            fetch('https://script.google.com/macros/s/AKfycbyaB3Yg6rMrpKcWNupUErpXtUyqFJgiC1aRkTb43CVLamWGuxjW0XTYNwmRaqFrR6YV/exec', {
+                method: 'POST',
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                alert('Data submitted successfully!');
+            })
+            .catch(error => {
+                alert('Data submitted successfully!');
+                console.error(error);
+            });
+        });
+  </script>
+</body>
+</html>

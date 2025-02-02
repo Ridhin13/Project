@@ -1,0 +1,174 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Options</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f3f4f6; /* Light background */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 900px;
+            width: 90%;
+        }
+
+        /* Left Section (Form) */
+        .form-section {
+            flex: 1;
+            padding: 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-section h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #333;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #fff;
+            text-decoration: none;
+            background: linear-gradient(90deg, #4caf50, #2e7d32); /* Metro green theme */
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        /* Logout Button Style */
+        .logout-button {
+            position: relative;
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 35px;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ff6f61, #d50000);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .logout-button:hover {
+            background: linear-gradient(135deg, #d50000, #ff6f61);
+            box-shadow: 0 8px 25px rgba(255, 105, 97, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .logout-button:active {
+            transform: scale(0.95);
+        }
+
+        .logout-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Glow Animation */
+        .logout-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: skewX(-45deg);
+            transition: all 0.3s;
+        }
+
+        .logout-button:hover::before {
+            left: 100%;
+        }
+
+        /* Right Section (Animation) */
+        .animation-section {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            background: #f9fafb;
+        }
+
+        /* Metro Animation */
+        .metro {
+            position: absolute;
+            bottom: 20px;
+            left: 100%;
+            width: 200px;
+            animation: moveTrain 8s linear infinite;
+        }
+
+        @keyframes moveTrain {
+            0% {
+                left: 100%;
+            }
+            100% {
+                left: -220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Section: Form -->
+        <div class="form-section">
+            <h1>Track Your Progress</h1>
+            <a href="WorkTracker Application.html" class="button">Productivity</a>
+            <a href="Procurement.html" class="button">Procurement</a>
+            <a href="site.html" class="button">Access to Site</a> <!-- New Button -->
+            <a href="login.html" class="logout-button"><span>Logout</span></a> <!-- Enhanced Logout Button -->
+        </div>
+
+        <!-- Right Section: Metro Animation -->
+        <div class="animation-section">
+            <img src="metro (1).png" 
+                 alt="Metro Train" class="metro">
+        </div>
+    </div>
+</body>
+</html>
