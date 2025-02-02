@@ -151,59 +151,65 @@
                 left: -220px;
             }
         }
-        /* Responsive Design */
-@media (max-width: 768px) { /* For tablets & smaller devices */
-    .container {
-        flex-direction: column; /* Stack sections vertically */
-        width: 100%;
-        height: auto;
-    }
+       /* Responsive Design */
+        @media (max-width: 768px) { /* For tablets & smaller devices */
+            .container {
+                flex-direction: column; /* Stack sections vertically */
+                width: 100%;
+                height: auto;
+            }
 
-    .form-section {
-        padding: 20px;
-    }
+            .form-section {
+                padding: 20px;
+            }
 
-    .form-section h1 {
-        font-size: 28px;
-    }
+            .form-section h1 {
+                font-size: 28px;
+            }
 
-    .button {
-        padding: 12px 20px;
-        font-size: 16px;
-    }
+            .button {
+                padding: 12px 20px;
+                font-size: 16px;
+            }
 
-    .logout-button {
-        padding: 12px 25px;
-        font-size: 16px;
-    }
+            .logout-button {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
 
-    .animation-section {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 200px;
-    }
+            .animation-section {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 150px; /* Fixed height for mobile */
+            }
 
-    .metro {
-        width: 150px; /* Reduce image size */
-    }
-}
-@media (max-width: 480px) { /* For mobile screens */
-    .form-section h1 {
-        font-size: 24px;
-    }
+            .metro {
+                width: 150px; /* Reduce image size */
+                bottom: 10px; /* Adjust position */
+            }
+        }
 
-    .button, .logout-button {
-        width: 100%; /* Full-width buttons */
-        font-size: 14px;
-        padding: 10px 15px;
-        margin: 10px 0; /* Space between buttons */
-    }
+        @media (max-width: 480px) { /* For mobile screens */
+            .form-section h1 {
+                font-size: 24px;
+            }
 
-    .metro {
-        width: 120px;
-    }
-}
+            .button, .logout-button {
+                width: 100%; /* Full-width buttons */
+                font-size: 14px;
+                padding: 10px 15px;
+                margin: 10px 0; /* Space between buttons */
+            }
+
+            .animation-section {
+                height: 120px; /* Smaller height for mobile */
+            }
+
+            .metro {
+                width: 120px; /* Smaller image for mobile */
+            }
+        }
     </style>
 </head>
 <body>
