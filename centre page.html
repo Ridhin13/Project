@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -103,6 +103,7 @@
         /* Main Container with Glass Effect */
         .container {
             display: flex;
+            flex-direction: column; /* Stack sections vertically on mobile */
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
             border-radius: 15px;
@@ -119,7 +120,7 @@
         /* Left Section (Form) */
         .form-section {
             flex: 1;
-            padding: 40px;
+            padding: 20px; /* Reduced padding for mobile */
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -146,8 +147,8 @@
         }
 
         .form-section h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
+            font-size: 24px; /* Reduced font size for mobile */
+            margin-bottom: 15px; /* Reduced margin for mobile */
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #333;
@@ -157,9 +158,9 @@
 
         .button {
             display: inline-block;
-            padding: 15px 30px;
-            margin: 15px;
-            font-size: 18px;
+            padding: 10px 20px; /* Reduced padding for mobile */
+            margin: 10px; /* Reduced margin for mobile */
+            font-size: 16px; /* Reduced font size for mobile */
             font-weight: 600;
             text-transform: uppercase;
             color: #fff;
@@ -201,9 +202,9 @@
         .logout-button {
             position: relative;
             display: inline-block;
-            margin-top: 30px;
-            padding: 15px 35px;
-            font-size: 20px;
+            margin-top: 20px; /* Reduced margin for mobile */
+            padding: 10px 25px; /* Reduced padding for mobile */
+            font-size: 18px; /* Reduced font size for mobile */
             font-weight: bold;
             text-transform: uppercase;
             background: linear-gradient(135deg, #ff6f61, #d50000);
@@ -253,22 +254,66 @@
             position: relative;
             overflow: hidden;
             background: rgba(249, 250, 251, 0.7);
+            height: 150px; /* Fixed height for mobile */
         }
 
         /* Metro Animation */
         .metro {
             position: absolute;
-            bottom: 20px;
+            bottom: 0;
             left: 100%;
-            width: 550px;
-            animation: moveTrain 12s linear infinite;
+            width: 300px; /* Reduced width for mobile */
+            animation: moveTrain 8s linear infinite; /* Adjusted animation duration */
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
         }
 
         @keyframes moveTrain {
             0% { left: 100%; }
-            45% { left: -550px; }
-            100% { left: -550px; }
+            45% { left: -300px; } /* Adjusted for smaller width */
+            100% { left: -300px; }
+        }
+
+        /* Media Query for Mobile Screens */
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row; /* Revert to horizontal layout on larger screens */
+            }
+
+            .form-section {
+                padding: 40px; /* Revert to original padding */
+            }
+
+            .form-section h1 {
+                font-size: 36px; /* Revert to original font size */
+                margin-bottom: 20px; /* Revert to original margin */
+            }
+
+            .button {
+                padding: 15px 30px; /* Revert to original padding */
+                margin: 15px; /* Revert to original margin */
+                font-size: 18px; /* Revert to original font size */
+            }
+
+            .logout-button {
+                margin-top: 30px; /* Revert to original margin */
+                padding: 15px 35px; /* Revert to original padding */
+                font-size: 20px; /* Revert to original font size */
+            }
+
+            .animation-section {
+                height: auto; /* Revert to auto height */
+            }
+
+            .metro {
+                width: 550px; /* Revert to original width */
+                animation: moveTrain 12s linear infinite; /* Revert to original animation duration */
+            }
+
+            @keyframes moveTrain {
+                0% { left: 100%; }
+                45% { left: -550px; } /* Revert to original animation */
+                100% { left: -550px; }
+            }
         }
     </style>
 </head>
