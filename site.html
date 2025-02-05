@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-image: url('Desktop - 2.png');
+      background-image: url('file:///C:/Users/DELL/Desktop/worktracker%20new/Desktop%20-%202.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -16,6 +16,8 @@
       align-items: center;
       height: 100vh;
       margin: 0;
+      padding: 10px;
+      box-sizing: border-box;
     }
 
     #siteAccessForm {
@@ -24,7 +26,7 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
       width: 100%;
-      max-width: 600px;
+      max-width: 400px;
       max-height: 80vh;
       overflow: auto;
       box-sizing: border-box;
@@ -58,36 +60,33 @@
       border-color: #4CAF50;
     }
 
-    button {
-      padding: 12px 20px;
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    button, .back-btn {
+      padding: 12px;
       background-color: #4CAF50;
       color: white;
       border: none;
       cursor: pointer;
-      width: 100%;
       font-size: 16px;
       border-radius: 4px;
+      text-align: center;
+      width: 100%;
     }
 
-    button:hover {
+    button:hover, .back-btn:hover {
       background-color: #45a049;
     }
 
     .back-btn {
-      position: absolute;
-      right: 20px;
-      bottom: 70px;
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      text-align: center;
+      display: block;
       text-decoration: none;
-      font-size: 16px;
-      border-radius: 5px;
-    }
-
-    .back-btn:hover {
-      background-color: #45a049;
+      text-align: center;
     }
   </style>
 </head>
@@ -107,12 +106,13 @@
     <label for="delay">Delay (in days):</label>
     <input type="text" id="delay" name="delay" readonly>
 
-    <button type="submit">Submit</button>
-    <a href="centre page.html" class="back-btn">Back</a>
+    <div class="button-container">
+      <button type="submit">Submit</button>
+      <a href="centre page.html" class="back-btn">Back</a>
+    </div>
   </form>
 
   <script>
-    // Calculate delay when dates are entered
     const proposedDateInput = document.getElementById('proposedDate');
     const actualDateInput = document.getElementById('actualDate');
     const delayInput = document.getElementById('delay');
@@ -133,7 +133,6 @@
     proposedDateInput.addEventListener('change', calculateDelay);
     actualDateInput.addEventListener('change', calculateDelay);
 
-    // Submit form data to Apps Script Web App
     document.getElementById('siteAccessForm').addEventListener('submit', function (e) {
       e.preventDefault();
 
@@ -149,7 +148,6 @@
         delay: document.getElementById('delay').value,
       };
 
-      // Show loading state
       const submitButton = this.querySelector('button[type="submit"]');
       submitButton.disabled = true;
       submitButton.textContent = 'Submitting...';
