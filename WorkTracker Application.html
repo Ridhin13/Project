@@ -264,6 +264,7 @@
             .then(response => response.json())
             .then(result => {
                 alert('Data submitted successfully!');
+              document.getElementById('projectForm').reset(); // Clear the form
             })
             .catch(error => {
                 alert('Data submitted successfully!');
