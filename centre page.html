@@ -103,6 +103,7 @@
         /* Main Container with Glass Effect */
         .container {
             display: flex;
+            flex-direction: column;
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
             border-radius: 15px;
@@ -116,10 +117,17 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Left Section (Form) */
+        /* Animation Section */
+        .animation-section {
+            position: relative;
+            height: 150px;
+            overflow: hidden;
+            background: rgba(249, 250, 251, 0.7);
+        }
+
+        /* Form Section */
         .form-section {
-            flex: 1;
-            padding: 40px;
+            padding: 40px 20px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -146,20 +154,19 @@
         }
 
         .form-section h1 {
-            font-size: 36px;
+            font-size: 28px;
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #333;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative;
         }
 
         .button {
             display: inline-block;
-            padding: 15px 30px;
-            margin: 15px;
-            font-size: 18px;
+            padding: 12px 25px;
+            margin: 10px;
+            font-size: 16px;
             font-weight: 600;
             text-transform: uppercase;
             color: #fff;
@@ -170,6 +177,8 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
+            width: 80%;
+            max-width: 300px;
         }
 
         .button::before {
@@ -197,13 +206,12 @@
             transform: scale(0.95);
         }
 
-        /* Logout Button Style */
         .logout-button {
             position: relative;
             display: inline-block;
-            margin-top: 30px;
-            padding: 15px 35px;
-            font-size: 20px;
+            margin-top: 20px;
+            padding: 12px 30px;
+            font-size: 18px;
             font-weight: bold;
             text-transform: uppercase;
             background: linear-gradient(135deg, #ff6f61, #d50000);
@@ -214,6 +222,8 @@
             cursor: pointer;
             overflow: hidden;
             transition: all 0.3s ease;
+            width: 80%;
+            max-width: 300px;
         }
 
         .logout-button:hover {
@@ -247,14 +257,6 @@
             left: 100%;
         }
 
-        /* Right Section (Animation) */
-        .animation-section {
-            flex: 1;
-            position: relative;
-            overflow: hidden;
-            background: rgba(249, 250, 251, 0.7);
-        }
-
         /* Metro Animation */
         .metro {
             position: absolute;
@@ -268,6 +270,56 @@
         @keyframes moveTrain {
             0% { left: 100%; }
             100% { left: -550px; }
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+            
+            .animation-section {
+                flex: 1;
+                height: auto;
+            }
+            
+            .form-section {
+                flex: 1;
+                padding: 40px;
+            }
+
+            .form-section h1 {
+                font-size: 36px;
+            }
+
+            .button, .logout-button {
+                width: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .animation-section {
+                height: 100px;
+            }
+
+            .form-section {
+                padding: 20px 15px;
+            }
+
+            .form-section h1 {
+                font-size: 24px;
+            }
+
+            .button {
+                padding: 10px 20px;
+                font-size: 14px;
+                margin: 8px;
+            }
+
+            .logout-button {
+                padding: 10px 25px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -285,18 +337,18 @@
     </div>
 
     <div class="container">
-        <!-- Left Section: Form -->
+        <!-- Metro Animation Section (Moved to top for mobile) -->
+        <div class="animation-section">
+            <img src="metro long.png" alt="Metro Train" class="metro">
+        </div>
+
+        <!-- Form Section -->
         <div class="form-section">
             <h1>Track Your Progress</h1>
             <a href="WorkTracker Application.html" class="button">Productivity</a>
             <a href="Procurement.html" class="button">Procurement</a>
             <a href="site.html" class="button">Access to Site</a>
             <a href="login.html" class="logout-button"><span>Logout</span></a>
-        </div>
-
-        <!-- Right Section: Metro Animation -->
-        <div class="animation-section">
-            <img src="metro long.png" alt="Metro Train" class="metro">
         </div>
     </div>
 </body>
