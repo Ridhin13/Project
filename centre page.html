@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -103,7 +103,7 @@
         /* Main Container with Glass Effect */
         .container {
             display: flex;
-            flex-direction: column;
+            flex-direction: column; /* Stack sections vertically on mobile */
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
             border-radius: 15px;
@@ -117,17 +117,10 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Animation Section */
-        .animation-section {
-            position: relative;
-            height: 150px;
-            overflow: hidden;
-            background: rgba(249, 250, 251, 0.7);
-        }
-
-        /* Form Section */
+        /* Left Section (Form) */
         .form-section {
-            padding: 40px 20px;
+            flex: 1;
+            padding: 40px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -154,19 +147,20 @@
         }
 
         .form-section h1 {
-            font-size: 28px;
+            font-size: 36px;
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #333;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         .button {
             display: inline-block;
-            padding: 12px 25px;
-            margin: 10px;
-            font-size: 16px;
+            padding: 15px 30px;
+            margin: 15px;
+            font-size: 18px;
             font-weight: 600;
             text-transform: uppercase;
             color: #fff;
@@ -177,8 +171,6 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
-            width: 80%;
-            max-width: 300px;
         }
 
         .button::before {
@@ -206,12 +198,13 @@
             transform: scale(0.95);
         }
 
+        /* Logout Button Style */
         .logout-button {
             position: relative;
             display: inline-block;
-            margin-top: 20px;
-            padding: 12px 30px;
-            font-size: 18px;
+            margin-top: 30px;
+            padding: 15px 35px;
+            font-size: 20px;
             font-weight: bold;
             text-transform: uppercase;
             background: linear-gradient(135deg, #ff6f61, #d50000);
@@ -222,8 +215,6 @@
             cursor: pointer;
             overflow: hidden;
             transition: all 0.3s ease;
-            width: 80%;
-            max-width: 300px;
         }
 
         .logout-button:hover {
@@ -257,6 +248,14 @@
             left: 100%;
         }
 
+        /* Right Section (Animation) */
+        .animation-section {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            background: rgba(249, 250, 251, 0.7);
+        }
+
         /* Metro Animation */
         .metro {
             position: absolute;
@@ -272,52 +271,45 @@
             100% { left: -550px; }
         }
 
-        /* Media Queries for Responsive Design */
-        @media (min-width: 768px) {
+        /* Media Queries for Mobile Devices */
+        @media (max-width: 768px) {
             .container {
-                flex-direction: row;
+                flex-direction: column; /* Stack sections vertically */
             }
-            
+
             .animation-section {
-                flex: 1;
-                height: auto;
-            }
-            
-            .form-section {
-                flex: 1;
-                padding: 40px;
+                order: -1; /* Move the animation section to the top */
+                height: 150px; /* Adjust height for mobile */
             }
 
-            .form-section h1 {
-                font-size: 36px;
+            .metro {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                width: 100%; /* Make the metro image responsive */
+                animation: moveTrainMobile 12s linear infinite;
             }
 
-            .button, .logout-button {
-                width: auto;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .animation-section {
-                height: 100px;
+            @keyframes moveTrainMobile {
+                0% { transform: translateX(100%); }
+                100% { transform: translateX(-100%); }
             }
 
             .form-section {
-                padding: 20px 15px;
+                padding: 20px; /* Reduce padding for mobile */
             }
 
             .form-section h1 {
-                font-size: 24px;
+                font-size: 28px; /* Adjust font size for mobile */
             }
 
             .button {
-                padding: 10px 20px;
-                font-size: 14px;
-                margin: 8px;
+                padding: 10px 20px; /* Adjust button size for mobile */
+                font-size: 16px;
             }
 
             .logout-button {
-                padding: 10px 25px;
+                padding: 10px 20px; /* Adjust logout button size for mobile */
                 font-size: 16px;
             }
         }
@@ -337,12 +329,12 @@
     </div>
 
     <div class="container">
-        <!-- Metro Animation Section (Moved to top for mobile) -->
+        <!-- Right Section: Metro Animation -->
         <div class="animation-section">
             <img src="metro long.png" alt="Metro Train" class="metro">
         </div>
 
-        <!-- Form Section -->
+        <!-- Left Section: Form -->
         <div class="form-section">
             <h1>Track Your Progress</h1>
             <a href="WorkTracker Application.html" class="button">Productivity</a>
