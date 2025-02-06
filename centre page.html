@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Options</title>
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -19,20 +19,18 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            background: linear-gradient(-45deg, #B2A5FF, #DAD2FF, #FFF2AF, #493D9E);
+            background: linear-gradient(-45deg, #2C3E50, #3498DB, #2980B9, #34495E);
             background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+            animation: gradient 20s ease infinite;
             position: relative;
         }
 
-        /* Animated Background */
         @keyframes gradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* Moving Particles */
         .particles {
             position: fixed;
             top: 0;
@@ -45,65 +43,67 @@
 
         .particle {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.5);
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
-            animation: moveParticle 20s infinite linear;
+            animation: moveParticle 15s infinite linear;
         }
 
         .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .particle:nth-child(2) { left: 20%; animation-delay: -2s; }
-        .particle:nth-child(3) { left: 30%; animation-delay: -4s; }
-        .particle:nth-child(4) { left: 40%; animation-delay: -6s; }
-        .particle:nth-child(5) { left: 50%; animation-delay: -8s; }
-        .particle:nth-child(6) { left: 60%; animation-delay: -10s; }
-        .particle:nth-child(7) { left: 70%; animation-delay: -12s; }
-        .particle:nth-child(8) { left: 80%; animation-delay: -14s; }
+        .particle:nth-child(2) { left: 25%; animation-delay: -3s; }
+        .particle:nth-child(3) { left: 40%; animation-delay: -6s; }
+        .particle:nth-child(4) { left: 55%; animation-delay: -9s; }
+        .particle:nth-child(5) { left: 70%; animation-delay: -12s; }
+        .particle:nth-child(6) { left: 85%; animation-delay: -15s; }
 
         @keyframes moveParticle {
-            0% { transform: translateY(-100%) rotate(0deg) scale(0.5); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(1000%) rotate(360deg) scale(1.5); opacity: 0; }
+            0% { 
+                transform: translateY(-100%) rotate(0deg) scale(0.8); 
+                opacity: 0; 
+            }
+            20% { opacity: 0.4; }
+            80% { opacity: 0.4; }
+            100% { 
+                transform: translateY(1000%) rotate(360deg) scale(1.2); 
+                opacity: 0; 
+            }
         }
 
-        /* Floating Circles with Glow */
         body::before,
         body::after {
             content: '';
             position: absolute;
-            width: 300px;
-            height: 300px;
+            width: 400px;
+            height: 400px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            animation: float 8s infinite;
-            box-shadow: 0 0 50px rgba(255, 255, 255, 0.2),
-                       inset 0 0 50px rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            animation: float 15s infinite ease-in-out;
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.1),
+                       inset 0 0 50px rgba(255, 255, 255, 0.05);
         }
 
         body::before {
-            top: -150px;
-            left: -150px;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            top: -200px;
+            left: -200px;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
         }
 
         body::after {
-            bottom: -150px;
-            right: -150px;
-            animation-delay: -4s;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            bottom: -200px;
+            right: -200px;
+            animation-delay: -7.5s;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
         }
 
         @keyframes float {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(50px, 50px) rotate(180deg); }
+            50% { transform: translate(30px, 30px) rotate(90deg); }
         }
 
-        /* Main Container with Glass Effect */
         .container {
             display: flex;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             border-radius: 15px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
@@ -116,7 +116,6 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Left Section (Form) */
         .form-section {
             flex: 1;
             padding: 40px;
@@ -147,10 +146,10 @@
 
         .form-section h1 {
             font-size: 36px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #333;
+            color: #2C3E50;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             position: relative;
         }
@@ -158,13 +157,13 @@
         .button {
             display: inline-block;
             padding: 15px 30px;
-            margin: 15px;
+            margin: 12px;
             font-size: 18px;
             font-weight: 600;
             text-transform: uppercase;
             color: #fff;
             text-decoration: none;
-            background: linear-gradient(90deg, #4caf50, #2e7d32);
+            background: linear-gradient(90deg, #3498DB, #2980B9);
             border-radius: 50px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -186,7 +185,7 @@
         .button:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(90deg, #2e7d32, #4caf50);
+            background: linear-gradient(90deg, #2980B9, #3498DB);
         }
 
         .button:hover::before {
@@ -197,16 +196,15 @@
             transform: scale(0.95);
         }
 
-        /* Logout Button Style */
         .logout-button {
             position: relative;
             display: inline-block;
             margin-top: 30px;
             padding: 15px 35px;
-            font-size: 20px;
-            font-weight: bold;
+            font-size: 18px;
+            font-weight: 600;
             text-transform: uppercase;
-            background: linear-gradient(135deg, #ff6f61, #d50000);
+            background: linear-gradient(135deg, #E74C3C, #C0392B);
             color: #fff;
             border: none;
             border-radius: 50px;
@@ -217,8 +215,8 @@
         }
 
         .logout-button:hover {
-            background: linear-gradient(135deg, #d50000, #ff6f61);
-            box-shadow: 0 8px 25px rgba(255, 105, 97, 0.5);
+            background: linear-gradient(135deg, #C0392B, #E74C3C);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
             transform: translateY(-5px);
         }
 
@@ -238,7 +236,7 @@
             left: -100%;
             width: 200%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
             transform: skewX(-45deg);
             transition: all 0.3s;
         }
@@ -247,15 +245,17 @@
             left: 100%;
         }
 
-        /* Right Section (Animation) */
         .animation-section {
             flex: 1;
             position: relative;
             overflow: hidden;
             background: rgba(249, 250, 251, 0.7);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Metro Animation */
         .metro {
             position: absolute;
             bottom: 20px;
@@ -269,23 +269,22 @@
             0% { left: 100%; }
             100% { left: -550px; }
         }
-        /* Media Queries for Mobile Devices */
+
         @media (max-width: 768px) {
             .container {
-                flex-direction: column; /* Stack sections vertically */
+                flex-direction: column;
             }
 
             .animation-section {
-                order: -1; /* Move the animation section to the top */
-                height: 150px; /* Adjust height for mobile */
+                order: -1;
+                height: 150px;
+                min-height: auto;
             }
 
             .metro {
-                position: relative;
-                bottom: auto;
-                left: auto;
-                width: 100%; /* Make the metro image responsive */
-                animation: moveTrainMobile 12s linear infinite;
+                width: 100%;
+                max-width: 300px;
+                animation: moveTrainMobile 8s linear infinite;
             }
 
             @keyframes moveTrainMobile {
@@ -294,30 +293,30 @@
             }
 
             .form-section {
-                padding: 20px; /* Reduce padding for mobile */
+                padding: 20px;
             }
 
             .form-section h1 {
-                font-size: 28px; /* Adjust font size for mobile */
+                font-size: 24px;
+                margin-bottom: 20px;
             }
 
             .button {
-                padding: 10px 20px; /* Adjust button size for mobile */
+                padding: 12px 24px;
                 font-size: 16px;
+                margin: 8px;
             }
 
             .logout-button {
-                padding: 10px 20px; /* Adjust logout button size for mobile */
+                padding: 12px 24px;
                 font-size: 16px;
+                margin-top: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Particle Elements -->
     <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
@@ -327,12 +326,10 @@
     </div>
 
     <div class="container">
-        <!-- Right Section: Metro Animation -->
         <div class="animation-section">
             <img src="metro long.png" alt="Metro Train" class="metro">
         </div>
 
-        <!-- Left Section: Form -->
         <div class="form-section">
             <h1>Track Your Progress</h1>
             <a href="WorkTracker Application.html" class="button">Productivity</a>
