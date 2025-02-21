@@ -15,7 +15,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 85vh;
+            min-height: 85vh;
         }
         .form-container {
             background-color: white;
@@ -31,6 +31,7 @@
         .header h2 {
             color: #2c3e50;
             margin: 0 0 15px 0;
+            font-size: 1.8rem;
         }
         .window-select {
             margin-bottom: 25px;
@@ -47,6 +48,7 @@
             border: 1px solid #e2e8f0;
             border-radius: 6px;
             font-size: 14px;
+            max-width: 100%;
         }
         input[type="number"] {
             width: 150px;
@@ -54,6 +56,7 @@
             border: 1px solid #e2e8f0;
             border-radius: 6px;
             font-size: 14px;
+            max-width: 100%;
         }
         select {
             width: 180px;
@@ -62,6 +65,11 @@
             border-radius: 6px;
             font-size: 14px;
             background-color: white;
+            max-width: 100%;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 20px;
         }
         table {
             width: 100%;
@@ -71,6 +79,7 @@
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
+            min-width: 600px;
         }
         th, td {
             padding: 15px;
@@ -129,92 +138,44 @@
         .back-button:hover {
             background-color: #e74c3c;
         }
-
-        /* Mobile-specific styles */
-        @media screen and (max-width: 768px) {
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
             body {
-                height: auto;
                 padding: 10px;
-                margin: 10px;
-                background-attachment: scroll;
-            }
-            
-            .form-container {
-                padding: 15px;
-                margin: 10px;
-                width: calc(100% - 20px);
-            }
-
-            .header h2 {
-                font-size: 20px;
-                text-align: center;
-            }
-
-            table, thead, tbody, th, td, tr {
+                height: auto;
                 display: block;
             }
-
-            thead tr {
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
+            .form-container {
+                padding: 20px 15px;
+                margin-bottom: 70px;
             }
-
-            tr {
-                margin-bottom: 15px;
-                border: 1px solid #e2e8f0;
-                border-radius: 8px;
+            .header h2 {
+                font-size: 1.5rem;
+                text-align: center;
             }
-
-            td {
-                border: none;
-                position: relative;
-                padding: 10px;
-                padding-left: 50%;
-                text-align: left;
-                min-height: 30px;
-            }
-
-            td:before {
-                position: absolute;
-                left: 10px;
-                width: 45%;
-                padding-right: 10px;
-                white-space: nowrap;
-                font-weight: bold;
-            }
-
-            /* Add labels for mobile view */
-            td:nth-of-type(2):before { content: "Quantity Required:"; }
-            td:nth-of-type(3):before { content: "Existing Inventory:"; }
-            td:nth-of-type(4):before { content: "Source:"; }
-
-            input[type="number"], input[type="month"], select {
+            input[type="month"], 
+            input[type="number"],
+            select {
                 width: 100%;
-                max-width: none;
+                box-sizing: border-box;
             }
-
             .back-button {
-                position: static;
+                bottom: 20px;
+                right: 50%;
+                transform: translateX(50%);
+                width: 80%;
+                max-width: 300px;
+                text-align: center;
+            }
+            button[type="submit"] {
                 width: 100%;
-                margin-top: 20px;
-            }
-
-            /* Adjust input container spacing */
-            .window-select {
-                margin-bottom: 15px;
-            }
-
-            /* Make form elements more touch-friendly */
-            button, input, select {
-                min-height: 44px;
+                margin-bottom: 60px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Rest of the HTML remains exactly the same -->
-    <!-- Keeping the existing HTML structure intact -->
     <div class="form-container">
         <div class="header">
             <h2>Construction Project Procurement Monitoring</h2>
@@ -222,75 +183,78 @@
         <form id="procurementForm">
             <div class="window-select">
                 <label for="window">Window Period:</label>
-                <input type="month" id="window" name="window" min="2020-01" max="2030-12"required>
+                <input type="month" id="window" name="window" min="2020-01" 
+                max="2030-12"required>
             </div>
             
-            <table>
-                <thead>
-                    <tr>
-                        <th>Item Name</th>
-                        <th>Quantity Required for the Next Month</th>
-                        <th>Existing Inventory</th>
-                        <th>Source</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="item-name">Steel (In Metric Tonnes)</td>
-                        <td>
-                            <input type="number" name="steel_quantity" min="0" step="0.01" required>
-                        </td>
-                        <td>
-                            <input type="number" name="steel_inventory" min="0" step="0.01" required>
-                        </td>
-                        <td>
-                            <select name="steel_source" required>
-                                <option value="">Select Source</option>
-                                <option value="Local">Local</option>
-                                <option value="Regional">Regional</option>
-                                <option value="Own Inventory">Own Inventory</option>
-                                <option value="External">External</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="item-name">Cement (In Metric Tonnes)</td>
-                        <td>
-                            <input type="number" name="cement_quantity" min="0" required>
-                        </td>
-                        <td>
-                            <input type="number" name="cement_inventory" min="0" required>
-                        </td>
-                        <td>
-                            <select name="cement_source" required>
-                                <option value="">Select Source</option>
-                                <option value="Local">Local</option>
-                                <option value="Regional">Regional</option>
-                                <option value="Own Inventory">Own Inventory</option>
-                                <option value="External">External</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="item-name">Aggregate (In Metric Tonnes)</td>
-                        <td>
-                            <input type="number" name="aggregate_quantity" min="0" step="0.01" required>
-                        </td>
-                        <td>
-                            <input type="number" name="aggregate_inventory" min="0" step="0.01" required>
-                        </td>
-                        <td>
-                            <select name="aggregate_source" required>
-                                <option value="">Select Source</option>
-                                <option value="Local">Local</option>
-                                <option value="Regional">Regional</option>
-                                <option value="Own Inventory">Own Inventory</option>
-                                <option value="External">External</option>
-                            </select>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Quantity Required for the Next Month</th>
+                            <th>Existing Inventory</th>
+                            <th>Source</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="item-name">Steel (In Metric Tonnes)</td>
+                            <td>
+                                <input type="number" name="steel_quantity" min="0" step="0.01" required>
+                            </td>
+                            <td>
+                                <input type="number" name="steel_inventory" min="0" step="0.01" required>
+                            </td>
+                            <td>
+                                <select name="steel_source" required>
+                                    <option value="">Select Source</option>
+                                    <option value="Local">Local</option>
+                                    <option value="Regional">Regional</option>
+                                    <option value="Own Inventory">Own Inventory</option>
+                                    <option value="External">External</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="item-name">Cement (In Metric Tonnes)</td>
+                            <td>
+                                <input type="number" name="cement_quantity" min="0" required>
+                            </td>
+                            <td>
+                                <input type="number" name="cement_inventory" min="0" required>
+                            </td>
+                            <td>
+                                <select name="cement_source" required>
+                                    <option value="">Select Source</option>
+                                    <option value="Local">Local</option>
+                                    <option value="Regional">Regional</option>
+                                    <option value="Own Inventory">Own Inventory</option>
+                                    <option value="External">External</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="item-name">Aggregate (In Metric Tonnes)</td>
+                            <td>
+                                <input type="number" name="aggregate_quantity" min="0" step="0.01" required>
+                            </td>
+                            <td>
+                                <input type="number" name="aggregate_inventory" min="0" step="0.01" required>
+                            </td>
+                            <td>
+                                <select name="aggregate_source" required>
+                                    <option value="">Select Source</option>
+                                    <option value="Local">Local</option>
+                                    <option value="Regional">Regional</option>
+                                    <option value="Own Inventory">Own Inventory</option>
+                                    <option value="External">External</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             
             <button type="submit">Submit</button>
         </form>
