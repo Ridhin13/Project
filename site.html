@@ -25,7 +25,7 @@
       border-radius: 8px;
       width: 100%;
       max-width: 600px;
-      max-height: 80vh;
+      max-height: 90vh;
       overflow: auto;
       box-sizing: border-box;
     }
@@ -89,59 +89,60 @@
     .back-btn:hover {
       background-color: #e74c3c;
     }
-              /* Responsive Design */
-        @media (max-width: 768px) { /* For tablets & smaller devices */
-            body {
-                padding: 20px; /* Add padding for smaller screens */
-            }
 
-            #projectForm {
-                padding: 15px;
-            }
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
 
-            h2 {
-                font-size: 20px;
-            }
+      #projectForm {
+        padding: 15px;
+      }
 
-            input, select {
-                padding: 10px;
-                font-size: 14px;
-            }
+      h2 {
+        font-size: 20px;
+      }
 
-            button {
-                padding: 10px 15px;
-                font-size: 14px;
-            }
+      input, select {
+        padding: 10px;
+        font-size: 14px;
+      }
 
-            .back-btn {
-                right: 10px; /* Adjust position for smaller screens */
-                bottom: 60px;
-                padding: 8px 15px;
-                font-size: 14px;
-            }
-        }
-        @media (max-width: 480px) { /* For mobile screens */
-            h2 {
-                font-size: 18px;
-            }
+      button {
+        padding: 10px 15px;
+        font-size: 14px;
+      }
 
-            input, select {
-                padding: 8px;
-                font-size: 12px;
-            }
+      .back-btn {
+        right: 10px;
+        bottom: 60px;
+        padding: 8px 15px;
+        font-size: 14px;
+      }
+    }
 
-            button {
-                padding: 8px 12px;
-                font-size: 12px;
-            }
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 18px;
+      }
 
-            .back-btn {
-                right: 5px; /* Adjust position for smaller screens */
-                bottom: 50px;
-                padding: 6px 12px;
-                font-size: 12px;
-            }
-        }
+      input, select {
+        padding: 8px;
+        font-size: 12px;
+      }
+
+      button {
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+
+      .back-btn {
+        right: 5px;
+        bottom: 50px;
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -150,6 +151,9 @@
 
     <label for="siteName">Site Name:</label>
     <input type="text" id="siteName" name="siteName" required>
+
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city" required>
 
     <label for="proposedDate">Proposed Date of Access:</label>
     <input type="date" id="proposedDate" name="proposedDate" required>
@@ -165,7 +169,6 @@
   </form>
 
   <script>
-    // Calculate delay when dates are entered
     const proposedDateInput = document.getElementById('proposedDate');
     const actualDateInput = document.getElementById('actualDate');
     const delayInput = document.getElementById('delay');
@@ -186,7 +189,6 @@
     proposedDateInput.addEventListener('change', calculateDelay);
     actualDateInput.addEventListener('change', calculateDelay);
 
-    // Submit form data to Apps Script Web App
     document.getElementById('siteAccessForm').addEventListener('submit', function (e) {
       e.preventDefault();
 
@@ -197,22 +199,20 @@
 
       const formData = {
         siteName: document.getElementById('siteName').value,
-        proposedDate: document.getElementById('proposedDate').value,
-        actualDate: document.getElementById('actualDate').value,
-        delay: document.getElementById('delay').value,
+        city: document.getElementById('city').value,
+        proposedDate: proposedDateInput.value,
+        actualDate: actualDateInput.value,
+        delay: delayInput.value,
       };
 
-      // Show loading state
       const submitButton = this.querySelector('button[type="submit"]');
       submitButton.disabled = true;
       submitButton.textContent = 'Submitting...';
 
-      fetch('https://script.google.com/macros/s/AKfycbx0RKHhJ1FUwrMoDTewmipDI-i20EtjiogfiwhM5BBbaMOThVy6-piqBg_ytC6chc31/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbxxjaArykH_CQj9A90OSpjYg1yk_h7Cu5VOs5Pnxpjfk1jWlnhp1D9gXx7GSEsXq2W0/exec', {
         method: 'POST',
         mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({
           sheetName: "Site Access",
           data: JSON.stringify(formData)
