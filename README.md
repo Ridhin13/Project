@@ -1,7 +1,4 @@
-# Project
-Construction WorkTracker
-```mermaid
-graph TD;
+graph LR;
     User -->|Fills Form| HTML[HTML Form]
     HTML -->|Triggers JavaScript| JS[JavaScript]
     JS -->|Sends Data via Fetch API| AppsScript[Google Apps Script]
