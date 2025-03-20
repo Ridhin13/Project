@@ -1,9 +1,12 @@
-# Project
-Construction WorkTracker
 ```mermaid
-graph TD;
-    User -->|Fills Form| HTML[HTML Form]
-    HTML -->|Triggers JavaScript| JS[JavaScript]
-    JS -->|Sends Data via Fetch API| AppsScript[Google Apps Script]
-    AppsScript -->|Processes Data| GoogleSheet[Google Sheets]
-    GoogleSheet -->|Stores Data| Database[Database]
+graph LR
+    A[User] --> B[Fills Form]
+    B --> C[HTML Form]
+    C --> D[Triggers JavaScript]
+    D --> E[JavaScript]
+    E --> F[Sends Data via Fetch API]
+    F --> G[Google Apps Script]
+    G --> H[Processes Data]
+    H --> I[Google Sheets]
+    I --> J[Stores Data]
+    J --> K[Database]
