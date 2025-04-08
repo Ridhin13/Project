@@ -155,7 +155,7 @@
     <label for="city">City:</label>
     <input type="text" id="city" name="city" required>
 
-    <label for="proposedDate">Proposed Date of Access:</label>
+    <label for="proposedDate">Contractual Date of Access:</label>
     <input type="date" id="proposedDate" name="proposedDate" required>
 
     <label for="actualDate">Expected/Actual Date of Access:</label>
@@ -193,7 +193,7 @@
       e.preventDefault();
 
       if (!proposedDateInput.value || !actualDateInput.value) {
-        alert("Please fill out both the Proposed and Actual Date fields.");
+        alert("Please fill out both the Contractual and Actual Date fields.");
         return;
       }
 
